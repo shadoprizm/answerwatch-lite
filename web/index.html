@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AnswerWatch Lite — AI Answer Visibility Reports</title>
+    <meta
+      name="description"
+      content="AnswerWatch Lite helps agencies track brand mentions in AI answers and generate client-ready visibility reports."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="AnswerWatch Lite home">
+        <span class="brand-mark">AW</span>
+        <span>AnswerWatch Lite</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#try">Try It Now</a>
+        <a href="#pricing">Pricing</a>
+        <a class="nav-cta" href="https://github.com/shadoprizm/answerwatch-lite">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">AI-search reporting for lean agencies</p>
+          <h1>Show clients where they appear in AI answers.</h1>
+          <p class="hero-text">
+            AnswerWatch Lite turns manual ChatGPT, Perplexity, Gemini, Grok, and Google AI checks into a scored
+            visibility report with competitors, cited sources, and next actions.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#try">Try It Now</a>
+            <a class="button secondary" href="https://github.com/shadoprizm/answerwatch-lite">View Code</a>
+          </div>
+          <div class="trust-row" aria-label="Key product metrics">
+            <span>Manual MVP</span>
+            <span>No login</span>
+            <span>Client-ready report</span>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Example answer visibility score">
+          <div class="score-ring">
+            <span id="heroScore">58</span>
+            <small>/100</small>
+          </div>
+          <div>
+            <p class="panel-label">Example weekly status</p>
+            <h2>Watch</h2>
+            <p>
+              Brand appears in 2 of 4 buyer questions. Competitors are winning answers with stronger citations.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What it does</p>
+          <h2>Focused reporting for the GEO layer.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="icon">Q</span>
+            <h3>Prompt Sets</h3>
+            <p>Track the actual buyer questions clients care about instead of generic keyword lists.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon">M</span>
+            <h3>Mention Tracking</h3>
+            <p>Record whether the brand appears, which competitors appear, and which sources get cited.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon">S</span>
+            <h3>Visibility Score</h3>
+            <p>Convert scattered observations into a clear score, risk label, and weekly trend narrative.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon">R</span>
+            <h3>Client Reports</h3>
+            <p>Generate plain-language recommendations that agencies can send to clients immediately.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section steps">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2>Three steps from prompt checks to client proof.</h2>
+        </div>
+        <div class="step-grid">
+          <div>
+            <strong>1</strong>
+            <h3>Enter the brand</h3>
+            <p>Add the client, category, audience, and website so the report has context.</p>
+          </div>
+          <div>
+            <strong>2</strong>
+            <h3>Log observations</h3>
+            <p>Paste prompts and answer notes from AI engines, then mark brand mentions and citations.</p>
+          </div>
+          <div>
+            <strong>3</strong>
+            <h3>Send the report</h3>
+            <p>Copy a polished summary with score, competitors, sources, and recommended actions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="try" class="section tool-section">
+        <div class="section-heading">
+          <p class="eyebrow">Try It Now</p>
+          <h2>Build a weekly AI-answer visibility report.</h2>
+        </div>
+
+        <div class="tool-layout">
+          <form id="watchForm" class="tool-panel">
+            <div class="form-grid">
+              <label>
+                Brand
+                <input id="brand" type="text" value="North Star Plumbing" />
+              </label>
+              <label>
+                Website
+                <input id="website" type="url" value="https://northstar.example" />
+              </label>
+              <label>
+                Audience
+                <input id="audience" type="text" value="Ottawa homeowners needing emergency service" />
+              </label>
+              <label>
+                Category
+                <input id="category" type="text" value="Emergency plumbing" />
+              </label>
+            </div>
+
+            <div class="table-header">
+              <h3>AI answer observations</h3>
+              <div class="table-actions">
+                <button type="button" class="ghost-button" id="loadDemo">Load Demo</button>
+                <button type="button" class="ghost-button" id="addRow">Add Row</button>
+              </div>
+            </div>
+
+            <div class="observation-list" id="observationList" aria-live="polite"></div>
+
+            <button class="button primary wide" type="submit">Generate Report</button>
+          </form>
+
+          <aside class="report-panel">
+            <div class="metric-grid">
+              <div>
+                <span id="score">0</span>
+                <small>Score</small>
+              </div>
+              <div>
+                <span id="mentionRate">0%</span>
+                <small>Mention rate</small>
+              </div>
+              <div>
+                <span id="sourceCount">0</span>
+                <small>Sources</small>
+              </div>
+            </div>
+            <div class="status-line">
+              <span>Status</span>
+              <strong id="status">Ready</strong>
+            </div>
+            <textarea id="reportOutput" readonly aria-label="Generated report">Generate a report to see the client-ready summary.</textarea>
+            <button type="button" class="button secondary wide" id="copyReport">Copy Report</button>
+            <p class="copy-note" id="copyNote" role="status" aria-live="polite"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="pricing" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Pricing</p>
+          <h2>Start manual, upgrade when reporting becomes recurring.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Free</h3>
+            <p class="price">$0</p>
+            <p>One client report at a time, manual observations, copy/export text.</p>
+          </article>
+          <article class="price-card featured">
+            <h3>Pro</h3>
+            <p class="price">$19<span>/mo</span></p>
+            <p>Saved clients, scheduled provider checks, PDF export, and white-label reports.</p>
+          </article>
+          <article class="price-card">
+            <h3>Agency</h3>
+            <p class="price">$49<span>/mo</span></p>
+            <p>Ten client workspaces, team templates, weekly email digests, and client-ready branding.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Built by North Star Holdings</span>
+      <a href="https://astrawebdev.com">astrawebdev.com</a>
+      <span>Recommended domain: answerwatchlite.com</span>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "answerwatch-lite",
+  "version": "1.0.0",
+  "description": "AI-answer visibility report builder for agencies and SMB consultants.",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve web",
+    "build": "node tests/build-check.mjs",
+    "test": "node tests/analyzer.test.mjs",
+    "check:html": "node tests/html-check.mjs"
+  },
+  "keywords": [
+    "ai-search",
+    "geo",
+    "seo",
+    "visibility",
+    "agency"
+  ],
+  "author": "North Star Holdings",
+  "license": "MIT",
+  "devDependencies": {}
+}
